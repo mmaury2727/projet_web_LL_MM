@@ -4,6 +4,7 @@
     <title>Hendek Tracker</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <style>
       #map {
         height: 80vh;
@@ -15,6 +16,7 @@
         padding: 0;
         display: flex;
         flex-direction: column;
+        font-family: 'Roboto', sans-serif;
       }
       header {
         background-color: #333;
@@ -48,6 +50,7 @@
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
+        font-weight: 700; /* Gras pour un aspect moderne */
       }
       nav a:hover {
         background-color: #ddd;
@@ -68,15 +71,23 @@
       </ul>
     </nav>
     <div id="map"></div>
-    <script>
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
-        });
-      }
-    </script>
     <script src="https://cdn.jsdelivr.net/gh/somanchiu/Keyless-Google-Maps-API@v6.5/mapsJavaScriptAPI.js" async defer></script>
+    <script>
+
+        var map;
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 48.8566, lng: 2.3522 }, // Coordonnées de Paris
+                zoom: 12
+            });
+            var transitLayer = new google.maps.TransitLayer();
+            transitLayer.setMap(map);
+        }
+
+        
+        
+    </script>
+    <!--<script src="https://cdn.jsdelivr.net/gh/somanchiu/Keyless-Google-Maps-API@v6.5/mapsJavaScriptAPI.js" async defer></script>-->
   </body>
 </html>

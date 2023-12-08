@@ -64,3 +64,21 @@ function sendRequestThroughCROSproxy(url, callback){
     xhttp.open("GET", CROSproxyURL + encodeURIComponent(url), true);
     xhttp.send();
 }
+
+function addMetroLine() {
+    var metroPath = [
+        { lat: 48.858844, lng: 2.294350 }, // Exemple de coordonnées pour la ligne de métro (Place du Trocadéro)
+        { lat: 48.853467, lng: 2.368637 }, // (Exemple) Coordonnées suivantes
+        // Ajoutez plus de coordonnées pour définir le tracé complet de la ligne
+    ];
+
+    var metroLine = new google.maps.Polyline({
+        path: metroPath,
+        geodesic: true,
+        strokeColor: '#FF0000',
+        strokeOpacity: 1.0,
+        strokeWeight: 2
+    });
+
+    metroLine.setMap(map);
+}
