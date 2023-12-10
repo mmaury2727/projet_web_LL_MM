@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 // Database credentials
 $servername = "localhost";
 $username = "root";
-$password = "root";
+$password = "";
 $dbname = "hendektracker";
 
 // Create connection

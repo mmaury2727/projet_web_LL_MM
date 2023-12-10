@@ -5,8 +5,14 @@ const DEFAULT_ZOOM = 13.5;
 
 export const GoogleMaps = (props) => {
   const ref = useRef();
-  console.log(props.locations.lat)
-  console.log(props.locations.lng);
+  const icons = {
+    officer: {
+      icon: "officer.png",
+    },
+    me: {
+      icon: "me.png",
+    }
+  };
   useEffect(() => {
     // Display the map
     if (ref.current) {
@@ -16,13 +22,16 @@ export const GoogleMaps = (props) => {
       });
       const transitLayer = new window.google.maps.TransitLayer();
       transitLayer.setMap(map);
-      let location = new window.google.maps.LatLng(props.locations.lng, props.locations.lat);
-      let marker = new window.google.maps.Marker({
-        position: location,
-        map: map
+      console.log(props.mapData)
+      props.mapData.forEach(element => {
+        new window.google.maps.Marker({
+          position: new window.google.maps.LatLng(element.lat, element.lng),
+          icon: element.type ? icons["me"].icon : icons["officer"].icon,
+          map: map
+        });
       });
     }
-  }, [ref]);
+  }, [props]);
 
   return (
     <div

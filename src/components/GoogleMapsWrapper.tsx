@@ -7,7 +7,7 @@ export const GoogleMapsWrapper = ({
   children: React.ReactNode;
 }) => {
   // Ideally we want the apiKey to be fetch from an environment variable
-  const apiKey = "AIzaSyCFh39HJ67aIXYx-VaGfsCcbqS6jxDjdPM";
+  const apiKey = "AIza";
 
   if (!apiKey) {
     return <div>Cannot display the map: google maps api key missing</div>;

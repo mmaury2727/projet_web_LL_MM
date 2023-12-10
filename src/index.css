@@ -33,15 +33,31 @@ html, body {
   min-height: 100px;
 }
 header {
-  background-color: #333;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   padding: 10px;
+  user-select: none;
+  pointer-events: none;
   text-align: center;
-  z-index: 1; /* Pour placer le header au-dessus de la carte */
+  z-index: 1;
 }
-#searchInput {
-  width: 80%;
-  padding: 8px;
-  font-size: 16px;
+.search-bar {
+  background-color: #282E6B;
+}
+.search-bar input{
+  color: black;
+}
+@media (min-width: 640px) {
+  .search-bar {
+      width: 50%;
+  }
+}
+@media (max-width: 639px) {
+  .search-bar {
+      width: 90%;
+  }
 }
 .logo-container{
   max-width: 280px;
@@ -53,7 +69,7 @@ header {
   position: relative;
 }
 .navbar{
-  background-color: #333;
+  background-color: white;
 }
 .test{
   position: absolute;
@@ -68,4 +84,76 @@ header {
   .logo-container{
     max-width: 120px;
   }
+}
+@media (min-width: 750px) {
+  .search-bar{
+    top: initial;
+    bottom: 15px;
+  }
+}
+.button-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 24rem; /* Adjust the maximum width as needed */
+  margin: 0 auto;
+  font-family: 'Inter', sans-serif; /* Add your preferred font-family */
+}
+
+.button {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s, background-color 0.3s;
+  cursor: pointer;
+}
+
+.button svg {
+  width: 1.25rem; /* Adjust the icon size as needed */
+  height: 1.25rem;
+  margin-bottom: 0.5rem;
+  fill: #282E6B; /* Default icon color */
+}
+
+.button span {
+  font-size: 0.875rem; /* Adjust the text size as needed */
+  color: #282E6B; /* Default text color */
+}
+
+.button:hover {
+  background-color: #282E6B; /* Hover background color */
+  color: white; /* Hover text color */
+}
+
+.button:hover span, .button:hover svg {
+  color: white;
+  fill: white;
+}
+
+.map-overlay-btn{
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+.map-btn {
+  display: block;
+  margin-bottom: 8px;
+  background-color: #282E6B;
+  color: #fff;
+  font-size: 1.5rem;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  text-decoration: none;
+  border: 2px solid #282E6B;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.map-btn:hover {
+  background-color: #fff;
+  color: #282E6B;
 }
