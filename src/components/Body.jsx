@@ -4,7 +4,7 @@ import { GoogleMapsWrapper } from './GoogleMapsWrapper.tsx';
 
 function Body() {
   
-  const [mapData, setMapData] = useState([{lat: "", long: ""}]);
+  const [mapData, setMapData] = useState([{lat: 0, lng: 0}]);
   
   useEffect(() => {
     fetch('http://localhost:8888/api.php') // Replace with your PHP file path
