@@ -46,6 +46,21 @@ header {
 .search-bar {
   background-color: #282E6B;
 }
+.search-bar > .results{
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+  bottom: 62px;
+  border: solid 2px black;
+  left: 0;
+  padding: 10px 0;
+  background: white;
+  overflow-y: scroll;
+  max-height: 420px;
+}
+.search-bar > .results p {
+  color: black;
+}
 .search-bar input{
   color: black;
 }

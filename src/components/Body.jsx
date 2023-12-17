@@ -6,11 +6,19 @@ import Search from './Search'
 function Body(props) {
   
   const [mapData, setMapData] = useState([{lat: 0, lng: 0}]);
-  
+  const [mapSearch, setMapSearch] = useState({});
+
   useEffect(() => {
     console.log(props);
     setMapData(props.data)
   }, []);
+
+  const useSelected = (e) => {
+    if (e){
+      console.log(e)
+      setMapSearch(e);
+    }
+  }
 
   const locateMe = () => {
     if (navigator.geolocation) {
@@ -34,7 +42,7 @@ function Body(props) {
           {
             mapData ? (
             <GoogleMapsWrapper>
-              <GoogleMaps mapData={mapData} />
+              <GoogleMaps mapData={mapData} mapSearch={mapSearch}/>
             </GoogleMapsWrapper>
             ) : ("")
           }
@@ -52,7 +60,7 @@ function Body(props) {
         </div>
         {
           props.search ? (
-            <Search className="search"></Search>
+            <Search data={props.data} selected={useSelected} stations={props.stations} className="search"></Search>
           ) : (
             ""
           )

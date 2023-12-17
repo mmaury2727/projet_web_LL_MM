@@ -15,8 +15,9 @@ export const GoogleMaps = (props) => {
   };
   useEffect(() => {
     // Display the map
+    let map;
     if (ref.current) {
-      const map = new window.google.maps.Map(ref.current, {
+      map = new window.google.maps.Map(ref.current, {
         center: DEFAULT_CENTER,
         zoom: DEFAULT_ZOOM,
       });
@@ -30,6 +31,10 @@ export const GoogleMaps = (props) => {
           map: map
         });
       });
+    }
+    if (ref.current && props.mapSearch && props.mapSearch.latitude && map) {
+      let latLng = new window.google.maps.LatLng(props.mapSearch.latitude, props.mapSearch.longitude);
+      map.panTo(latLng);
     }
   }, [props]);
 

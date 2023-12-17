@@ -19,17 +19,21 @@ if ($conn->connect_error) {
 }
 
 // Fetch data from the users table
-$sql = "
-SELECT
-   hnouches.id AS hnouches_id, hnouches.station AS hnouches_station, hnouches.author AS hnouches_author,
-   users.name AS author,
-   stations.name AS station,
-   stations.latitude AS lat,
-   stations.longitude AS lng
-FROM hnouches 
-INNER JOIN users ON hnouches.author = users.id
-INNER JOIN stations ON hnouches.station = stations.id;
-";
+if ($_GET["req"] == "hendeks"){
+    $sql = "
+    SELECT
+       hnouches.id AS hnouches_id, hnouches.station AS hnouches_station, hnouches.author AS hnouches_author,
+       users.name AS author,
+       stations.name AS station,
+       stations.latitude AS lat,
+       stations.longitude AS lng
+    FROM hnouches 
+    INNER JOIN users ON hnouches.author = users.id
+    INNER JOIN stations ON hnouches.station = stations.id;
+    ";
+} else {
+    $sql = "SELECT * FROM stations";
+}
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {

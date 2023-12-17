@@ -19,6 +19,7 @@ import axios from 'axios';
 function App() {
   const [search, setSearch] = useState(false);
   const [data, setData] = useState([]);
+  const [stations, setStations] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const setSearchF = () => {
@@ -26,10 +27,18 @@ function App() {
   }
 
   useEffect(() => {
-    axios.get('http://localhost/api.php', {
+    axios.get('http://localhost/api.php?req="hendeks"', {
     })
     .then(function (response) {
       setData(response.data);
+      axios.get('http://localhost/api.php?req="stations"', {
+      }).then((data)=>{
+        setStations(data.data);
+        setLoading(false); // Set loading to false when data is fetched
+      }).catch((e)=>{
+        console.log('Error fetching data:', e);
+        setLoading(false); // Also set loading to false on error
+      })
       setLoading(false); // Set loading to false when data is fetched
     })
     .catch(error => {
@@ -48,7 +57,7 @@ function App() {
       <Header/>
       <Router>
         <Routes>
-          <Route path="/" element={<Home data={data} search={search} />} />
+          <Route path="/" element={<Home data={data} stations={stations} search={search} />} />
           <Route path="/activity" element={<Activity data={data} />} />
         </Routes>
       </Router>
