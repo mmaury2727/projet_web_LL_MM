@@ -8,10 +8,8 @@ function Body(props) {
   const [mapData, setMapData] = useState([{lat: 0, lng: 0}]);
   
   useEffect(() => {
-    fetch('http://localhost/api.php') // Replace with your PHP file path
-    .then(response => response.json())
-    .then(data => setMapData(data))
-    .catch(error => console.log('Error fetching data:', error));
+    console.log(props);
+    setMapData(props.data)
   }, []);
 
   const locateMe = () => {
@@ -34,7 +32,7 @@ function Body(props) {
     <div className='body'>
         <div className="md:container md:mx-auto map-container">
           {
-            mapData.length ? (
+            mapData ? (
             <GoogleMapsWrapper>
               <GoogleMaps mapData={mapData} />
             </GoogleMapsWrapper>

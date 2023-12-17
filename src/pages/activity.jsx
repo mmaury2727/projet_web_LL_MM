@@ -1,9 +1,11 @@
 import React from 'react'
-
-const activity = () => {
+import Details from '../components/Details'
+const Activity = (props) => {
   return (
-    <div>activity</div>
+    <div className='body'>
+      <Details data={props.data}></Details>
+    </div>
   )
 }
 
-export default activity
+export default Activity
