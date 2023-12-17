@@ -42,6 +42,9 @@ function Body(props) {
           }
         </div>
         <div className="map-overlay-btn">
+          <button class="map-btn" id='install-button'>
+          ⬇
+          </button>
           <a href="/add" className="map-btn">
             +
           </a>
