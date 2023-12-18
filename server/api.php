@@ -22,7 +22,7 @@ if ($conn->connect_error) {
 if (isset($_GET["req"]) && $_GET["req"] == "hendeks"){
     $sql = "
     SELECT
-       hnouches.id AS hnouches_id, hnouches.station AS hnouches_station, hnouches.author AS hnouches_author,
+       hnouches.id AS hnouches_id, hnouches.station AS hnouches_station, hnouches.author AS hnouches_author, hnouches.date AS date,
        users.name AS author,
        stations.name AS station,
        stations.latitude AS lat,
