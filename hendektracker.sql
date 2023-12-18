@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Generation Time: Dec 09, 2023 at 02:38 PM
--- Server version: 5.7.39
--- PHP Version: 8.2.0
+-- Host: 127.0.0.1
+-- Generation Time: Dec 18, 2023 at 03:47 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,15 +31,24 @@ CREATE TABLE `hnouches` (
   `id` int(11) NOT NULL,
   `station` int(11) NOT NULL,
   `author` int(11) NOT NULL,
-  `date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `hnouches`
 --
 
 INSERT INTO `hnouches` (`id`, `station`, `author`, `date`) VALUES
-(3, 41, 1, '2023-12-08');
+(3, 413, 1, '2023-12-08 12:16:09'),
+(13, 66, 1, '2023-01-01 10:00:00'),
+(14, 420, 1, '2023-02-02 11:00:00'),
+(15, 823, 1, '2023-03-03 12:00:00'),
+(16, 410, 1, '2023-04-04 13:00:00'),
+(17, 142, 1, '2023-05-05 14:00:00'),
+(18, 63, 1, '2023-06-06 15:00:00'),
+(19, 818, 1, '2023-07-07 16:00:00'),
+(20, 612, 1, '2023-08-08 17:00:00'),
+(21, 64, 1, '2023-09-09 18:00:00');
 
 -- --------------------------------------------------------
 
@@ -48,18 +57,143 @@ INSERT INTO `hnouches` (`id`, `station`, `author`, `date`) VALUES
 --
 
 CREATE TABLE `stations` (
-  `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `longitude` varchar(100) NOT NULL,
-  `latitude` varchar(100) NOT NULL,
-  `type` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id` int(4) NOT NULL,
+  `latitude` varchar(18) DEFAULT NULL,
+  `longitude` varchar(18) DEFAULT NULL,
+  `name` varchar(35) DEFAULT NULL,
+  `line` int(2) DEFAULT NULL,
+  `type` varchar(5) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `stations`
 --
 
-INSERT INTO `stations` (`id`, `name`, `longitude`, `latitude`, `type`) VALUES
+INSERT INTO `stations` (`id`, `latitude`, `longitude`, `name`, `line`, `type`) VALUES
+(41, '48.89740222196378', '2.344847748752398', 'Porte de Clignancourt', 4, 'metro'),
+(42, '48.89434384790808', '2.3474307799602045', 'Simplon', 4, 'metro'),
+(43, '48.89143955394805', '2.349627158227452', 'Marcadet Poissonniers', 4, 'metro'),
+(44, '48.88671096710697', '2.349559430194617', 'Château Rouge', 4, 'metro'),
+(45, '48.88341808759222', '2.3496748325822017', 'Barbès Rochechouart', 4, 'metro'),
+(46, '48.87979369318188', '2.3557919075311387', 'Gare du Nord', 4, 'metro'),
+(47, '48.87599106387279', '2.3578807719253265', 'Gare de l\'Est', 4, 'metro'),
+(48, '48.87262083899373', '2.3561539474503386', 'Château d\'Eau', 4, 'metro'),
+(49, '48.869628862844074', '2.354468813108208', 'Strasbourg Saint-Denis', 4, 'metro'),
+(61, '48.874748649745484', '2.2955602562131467', 'Charles-de-Gaulle Étoile', 6, 'metro'),
+(62, '48.87126214352652', '2.2932406499473132', 'Kléber', 6, 'metro'),
+(63, '48.86698310851503', '2.2900588335804866', 'Boissière', 6, 'metro'),
+(64, '48.86361093671121', '2.2875801625296517', 'Trocadéro', 6, 'metro'),
+(65, '48.85744868914132', '2.2858124441464076', 'Passy', 6, 'metro'),
+(66, '48.85394260527926', '2.289334532778806', 'Bir-Hakeim', 6, 'metro'),
+(67, '48.85043454807889', '2.2936124371878024', 'Dupleix', 6, 'metro'),
+(68, '48.84874166478328', '2.2989309117480605', 'La Motte Picquet - Grenelle', 6, 'metro'),
+(69, '48.84750708106227', '2.3029682978173134', 'Cambronne', 6, 'metro'),
+(81, '48.836295300607894', '2.2783302598660233', 'Balard', 8, 'metro'),
+(82, '48.838734857902175', '2.2821433781708906', 'Lourmel', 8, 'metro'),
+(83, '48.84109405631434', '2.2879457664873772', 'Boucicaut', 8, 'metro'),
+(84, '48.84274677885832', '2.2919124133178745', 'Félix Faure', 8, 'metro'),
+(85, '48.844794762777255', '2.293951963648717', 'Commerce', 8, 'metro'),
+(86, '48.849575212975026', '2.298625127144873', 'La Motte Picquet - Grenelle', 8, 'metro'),
+(87, '48.85489056594407', '2.3064034857365163', 'École Militaire', 8, 'metro'),
+(88, '48.85772541195898', '2.3105659609468447', 'La Tour Maubourg', 8, 'metro'),
+(89, '48.860381278263674', '2.31489073005888', 'Invalides (r. Esnault-Pelterie)', 8, 'metro'),
+(141, '48.9132020942236', '2.3346631501197574', 'Mairie de Saint-Ouen', 14, 'metro'),
+(142, '48.90449641964034', '2.321743589558778', 'Saint-Ouen', 14, 'metro'),
+(143, '48.894980809790994', '2.3127919615012913', 'Porte de Clichy', 14, 'metro'),
+(144, '48.889560827381025', '2.3151768973047835', 'Pont Cardinet', 14, 'metro'),
+(145, '48.87571908888893', '2.324224580938852', 'Gare Saint-Lazare', 14, 'metro'),
+(146, '48.870667019963506', '2.3257526352867255', 'Madeleine', 14, 'metro'),
+(147, '48.86590673865971', '2.3341895419682492', 'Pyramides', 14, 'metro'),
+(148, '48.85958965464833', '2.3464781835875943', 'Châtelet', 14, 'metro'),
+(149, '48.8434867608722', '2.3739225903167536', 'Gare de Lyon', 14, 'metro'),
+(410, '48.86673355502223', '2.352829461254394', 'Réaumur Sébastopol', 4, 'metro'),
+(411, '48.863972477882776', '2.3496175641598396', 'Étienne Marcel', 4, 'metro'),
+(412, '48.86251523404101', '2.3457858600391797', 'Châtelet les Halles', 4, 'metro'),
+(413, '48.85971866106072', '2.3467682857366983', 'Châtelet', 4, 'metro'),
+(414, '48.854936377424146', '2.3473213170674256', 'Cité', 4, 'metro'),
+(415, '48.8531679839561', '2.343285978923923', 'Saint-Michel Notre-Dame', 4, 'metro'),
+(416, '48.852300762159715', '2.339727781593095', 'Odéon', 4, 'metro'),
+(417, '48.853718933065686', '2.3337761382184663', 'Saint-Germain-des-Prés', 4, 'metro'),
+(418, '48.85107136943748', '2.330700709954214', 'Saint-Sulpice', 4, 'metro'),
+(419, '48.846878237916876', '2.326792785027681', 'Saint-Placide', 4, 'metro'),
+(420, '48.8437813048013', '2.324397012385794', 'Montparnasse Bienvenue', 4, 'metro'),
+(421, '48.84221841267896', '2.329008926235402', 'Vavin', 4, 'metro'),
+(422, '48.838964279775986', '2.330754192086215', 'Raspail', 4, 'metro'),
+(423, '48.83345085727892', '2.3317401309853487', 'Denfert-Rochereau', 4, 'metro'),
+(424, '48.83111265944071', '2.3297050126201837', 'Mouton Duvernet', 4, 'metro'),
+(425, '48.82818847537889', '2.3271646496078233', 'Alésia', 4, 'metro'),
+(426, '48.82341162805273', '2.3255756362122453', 'Porte d\'Orléans (Général Leclerc)', 4, 'metro'),
+(427, '48.818676408977936', '2.3197403132985555', 'Mairie de Montrouge', 4, 'metro'),
+(428, '48.809703996598586', '2.317449187923372', 'Barbara', 4, 'metro'),
+(429, '48.803489717990644', '2.3173602968975313', 'Bagneux - Lucie Aubrac', 4, 'metro'),
+(610, '48.845626965812635', '2.3095314914609446', 'Sèvres Lecourbe', 6, 'metro'),
+(611, '48.84267681904916', '2.3128127748369014', 'Pasteur', 6, 'metro'),
+(612, '48.842102206274035', '2.321278562744627', 'Montparnasse Bienvenue', 6, 'metro'),
+(613, '48.840663228364996', '2.3263846107928456', 'Edgar Quinet', 6, 'metro'),
+(614, '48.838964279775986', '2.330754192086215', 'Raspail', 6, 'metro'),
+(615, '48.834292979538596', '2.3328523099608898', 'Denfert-Rochereau', 6, 'metro'),
+(616, '48.83290081472565', '2.3371351933438995', 'Saint-Jacques', 6, 'metro'),
+(617, '48.831129547092026', '2.3435116577497754', 'Glacière', 6, 'metro'),
+(618, '48.82979051275835', '2.350414872010463', 'Corvisart', 6, 'metro'),
+(619, '48.8309272400659', '2.3561219387971035', 'Place d\'Italie', 6, 'metro'),
+(620, '48.83321671877524', '2.362856399519012', 'Nationale', 6, 'metro'),
+(621, '48.83494772231993', '2.3681263304132094', 'Chevaleret', 6, 'metro'),
+(622, '48.83704511922334', '2.3728257245425715', 'Quai de la Gare', 6, 'metro'),
+(623, '48.84038874716129', '2.3799112714543975', 'Bercy', 6, 'metro'),
+(624, '48.839041142779394', '2.389620014061438', 'Dugommier', 6, 'metro'),
+(625, '48.8395496446341', '2.3957032894363923', 'Daumesnil', 6, 'metro'),
+(626, '48.841338248197566', '2.4009185367798023', 'Bel-Air', 6, 'metro'),
+(627, '48.84506157901035', '2.4012890198273475', 'Picpus', 6, 'metro'),
+(628, '48.84737487779481', '2.3954619948327394', 'Nation', 6, 'metro'),
+(810, '48.86681836891563', '2.322082848676169', 'Concorde', 8, 'metro'),
+(811, '48.86963317209047', '2.326272274027748', 'Madeleine', 8, 'metro'),
+(812, '48.87048333199217', '2.331186346851651', 'Opéra', 8, 'metro'),
+(813, '48.871256545007405', '2.344561060662729', 'Grands Boulevards', 8, 'metro'),
+(814, '48.86940219572108', '2.3538187935928794', 'Strasbourg Saint-Denis', 8, 'metro'),
+(815, '48.86760087916799', '2.3627573800027624', 'République', 8, 'metro'),
+(816, '48.863257944024426', '2.366661093353451', 'Filles du Calvaire', 8, 'metro'),
+(817, '48.86116886366122', '2.3672108677856154', 'Saint-Sébastien Froissart', 8, 'metro'),
+(818, '48.85710325722025', '2.3681841149506986', 'Chemin Vert', 8, 'metro'),
+(819, '48.853439426633884', '2.369513568156525', 'Bastille', 8, 'metro'),
+(820, '48.85017786186515', '2.3840922100556665', 'Faidherbe Chaligny', 8, 'metro'),
+(821, '48.844065596373376', '2.3904821339803877', 'Montgallet', 8, 'metro'),
+(822, '48.839445427444936', '2.396182886452632', 'Daumesnil', 8, 'metro'),
+(823, '48.83711700605412', '2.4023331645551846', 'Michel Bizot', 8, 'metro'),
+(824, '48.834785157146825', '2.4053832106267707', 'Porte Dorée', 8, 'metro'),
+(825, '48.832736700820156', '2.4003104030250766', 'Porte de Charenton', 8, 'metro'),
+(826, '48.82662006452886', '2.405851943981901', 'Liberté', 8, 'metro'),
+(827, '48.821897938499944', '2.4131329383427076', 'Charenton Écoles', 8, 'metro'),
+(828, '48.81480300606579', '2.4223761428456223', 'École Vétérinaire de Maisons-Alfort', 8, 'metro'),
+(829, '48.8091443609007', '2.43450989592394', 'Maisons-Alfort - Stade', 8, 'metro'),
+(830, '48.803355236116154', '2.445574101030144', 'Maisons-Alfort Les Juilliottes', 8, 'metro'),
+(831, '48.7966821340621', '2.449412805145807', 'Créteil L\'Échat', 8, 'metro'),
+(832, '48.78992046595464', '2.4505115282905896', 'Créteil Université', 8, 'metro'),
+(833, '48.78000282797376', '2.459363129076404', 'Créteil Préfecture', 8, 'metro'),
+(834, '48.76881073327119', '2.4642800705433565', 'Pointe du Lac', 8, 'metro'),
+(1410, '48.840001387714224', '2.3795540112141405', 'Bercy', 14, 'metro'),
+(1411, '48.83333855831707', '2.3866324020669847', 'Cour Saint-Emilion', 14, 'metro'),
+(1412, '48.82999019896456', '2.3757479832156028', 'Bibliothèque François Mitterrand', 14, 'metro'),
+(1413, '48.8271636169609', '2.3671730244778457', 'Olympiades', 14, 'metro');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stations_old`
+--
+
+CREATE TABLE `stations_old` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `latitude` varchar(100) NOT NULL,
+  `longitude` varchar(100) NOT NULL,
+  `type` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `stations_old`
+--
+
+INSERT INTO `stations_old` (`id`, `name`, `latitude`, `longitude`, `type`) VALUES
 (2, 'Abbesses', '48.8843091', '2.3387397', 'metro'),
 (3, 'Alésia', '48.8279667', '2.3263892', 'metro'),
 (4, 'Alexandre Dumas', '48.8563342', '2.3944206', 'metro'),
@@ -99,7 +233,7 @@ INSERT INTO `stations` (`id`, `name`, `longitude`, `latitude`, `type`) VALUES
 (38, 'Château d\'Eau', '48.8724895', '2.355908', 'metro'),
 (39, 'Château de Vincennes', '48.84421700000001', '2.440797', 'metro'),
 (40, 'Château-Landon', '48.8786783', '2.3620454', 'metro'),
-(41, 'Châtelet', '48.8578755', '2.3471858', 'metro'),
+(41, 'Châtelet', '48.859769', '2.346639', 'metro'),
 (42, 'Châtillon-Montrouge', '48.8108397', '2.3017168', 'metro'),
 (43, 'Chaussée d\'Antin-La Fayette', '48.8731197', '2.3330901', 'metro'),
 (44, 'Chemin Vert', '48.8601615', '2.3775645', 'metro'),
@@ -171,10 +305,10 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `created` date NOT NULL,
-  `reputation` int(11) NOT NULL DEFAULT '0',
+  `reputation` int(11) NOT NULL DEFAULT 0,
   `password` varchar(255) NOT NULL,
   `bio` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `users`
@@ -192,13 +326,19 @@ INSERT INTO `users` (`id`, `name`, `created`, `reputation`, `password`, `bio`) V
 --
 ALTER TABLE `hnouches`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_foreign_key_name` (`station`),
-  ADD KEY `fk_foreign_key_user` (`author`);
+  ADD KEY `fk_foreign_key_user` (`author`),
+  ADD KEY `station` (`station`);
 
 --
 -- Indexes for table `stations`
 --
 ALTER TABLE `stations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `stations_old`
+--
+ALTER TABLE `stations_old`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -215,12 +355,18 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `hnouches`
 --
 ALTER TABLE `hnouches`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `stations`
 --
 ALTER TABLE `stations`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1414;
+
+--
+-- AUTO_INCREMENT for table `stations_old`
+--
+ALTER TABLE `stations_old`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
@@ -237,8 +383,8 @@ ALTER TABLE `users`
 -- Constraints for table `hnouches`
 --
 ALTER TABLE `hnouches`
-  ADD CONSTRAINT `fk_foreign_key_name` FOREIGN KEY (`station`) REFERENCES `stations` (`id`),
-  ADD CONSTRAINT `fk_foreign_key_user` FOREIGN KEY (`author`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `fk_foreign_key_user` FOREIGN KEY (`author`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `hnouches_ibfk_1` FOREIGN KEY (`station`) REFERENCES `stations` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
