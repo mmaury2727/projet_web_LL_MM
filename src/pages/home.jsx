@@ -3,7 +3,7 @@ import Body from '../components/Body';
 
 const Home = (props) => {
     return (
-        <Body search={props.search} stations={props.stations} data={props.data}/>
+            <Body search={props.search} stations={props.stations} data={props.data}/>
     )
 }
 

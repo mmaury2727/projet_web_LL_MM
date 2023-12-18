@@ -127,6 +127,10 @@ header {
   fill: #282E6B; /* Default icon color */
 }
 
+.button svg g{
+  fill: #282E6B;
+}
+
 .button span {
   font-size: 0.875rem; /* Adjust the text size as needed */
   color: #282E6B; /* Default text color */
@@ -172,8 +176,15 @@ header {
   flex-grow: 1;
   width: 100%;
   height: 100%;
+  overflow-y: scroll;
   position: relative;
 }
-.enlarge{
-  min-height: 90vh;
+.stations-path{
+  background: #282e6bcf;
+  color: white;
+  border: solid 2px white;
+  border-radius: 12px;
+  max-width: 80vw;
+  margin: 0 auto;
+  padding: 25px 40px;
 }

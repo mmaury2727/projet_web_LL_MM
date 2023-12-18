@@ -19,7 +19,7 @@ if ($conn->connect_error) {
 }
 
 // Fetch data from the users table
-if ($_GET["req"] == "hendeks"){
+if (isset($_GET["req"]) && $_GET["req"] == "hendeks"){
     $sql = "
     SELECT
        hnouches.id AS hnouches_id, hnouches.station AS hnouches_station, hnouches.author AS hnouches_author,
@@ -31,6 +31,8 @@ if ($_GET["req"] == "hendeks"){
     INNER JOIN users ON hnouches.author = users.id
     INNER JOIN stations ON hnouches.station = stations.id;
     ";
+} else if (isset($_GET["id1"]) && isset($_GET["id2"])) {
+    $sql = "SELECT * FROM stations WHERE id BETWEEN ". $_GET["id1"] . " AND ". $_GET["id2"] . " ORDER BY id ASC;";
 } else {
     $sql = "SELECT * FROM stations";
 }
