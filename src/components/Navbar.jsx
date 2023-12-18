@@ -1,28 +1,28 @@
 import React from 'react'
-
+import { NavLink } from 'react-router-dom';
 function Navbar(props) {
   let search = false;
 
   return (
     <div class="navbar left-0 z-50 w-full h-16">
         <div class="button-container">
-            <a href="/" class="button">
+            <NavLink to="/" className="button">
                 <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                 <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"/>
                 </svg>
                 <span>Accueil</span>
-            </a>
+            </NavLink>
 
-            <a href="/activity" class="button">
+            <NavLink to="/activity" className="button">
                 <svg viewBox="332.6905 189.0751 16.8977 17.6302" width="16.8977" height="17.6302" xmlns="http://www.w3.org/2000/svg">
                 <path d="M40.2,26.2A4.5,4.5,0,0,1,39,23.3V19c0-8.1-5.4-15-15-15S9,10.7,9,19v5a2.6,2.6,0,0,1-.7,1.7L4.6,29.4A2,2,0,0,0,4,30.8V38a2,2,0,0,0,2,2H17.1a7,7,0,0,0,13.8,0H42a2,2,0,0,0,2-2V30.8a2,2,0,0,0-.6-1.4Z" transform="matrix(0.4023219943046569, 0, 0, 0.4023219943046569, 331.483642578125, 188.2704620361328)"/>
                 <path d="M7,19A17.1,17.1,0,0,1,13.5,5.6a2,2,0,0,0,.4-2.8,2,2,0,0,0-2.8-.3A20.6,20.6,0,0,0,3,19a2,2,0,0,0,4,0Z" transform="matrix(0.4023219943046569, 0, 0, 0.4023219943046569, 331.483642578125, 188.2704620361328)"/>
                 <path d="M36.9,2.4a2,2,0,0,0-2.8.4,2,2,0,0,0,.4,2.8A16.9,16.9,0,0,1,41,19a2,2,0,0,0,4,0A20.9,20.9,0,0,0,36.9,2.4Z" transform="matrix(0.4023219943046569, 0, 0, 0.4023219943046569, 331.483642578125, 188.2704620361328)"/>
                 </svg>
                 <span>Récents</span>
-            </a>
+            </NavLink>
 
-            <a href="/mytrip" class="button">
+            <NavLink to="/mytrip" className="button">
             <svg width="16.8977" height="17.6302" viewBox="0 0 24 24" version="1.1">
                 <g id="🔍-Product-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                 <g id="ic_fluent_subway_24_regular" fill="#212121" fill-rule="nonzero">
@@ -32,7 +32,7 @@ function Navbar(props) {
                 </g>
             </svg>
                 <span>Trajet</span>
-            </a>
+            </NavLink>
 
             <button onClick={props.setSearchF} class="button">
                 <svg viewBox="360.591 196.83 16.124 16.1232" width="16.124" height="16.1232" xmlns="http://www.w3.org/2000/svg">

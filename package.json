@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && node ./src/sw-build.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -29,6 +29,7 @@
       "react-app/jest"
     ]
   },
+  "proxy": "http://api/",
   "browserslist": {
     "production": [
       ">0.2%",
@@ -42,6 +43,7 @@
     ]
   },
   "devDependencies": {
-    "tailwindcss": "^3.3.6"
+    "tailwindcss": "^3.3.6",
+    "workbox-build": "^7.0.0"
   }
 }

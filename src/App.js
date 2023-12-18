@@ -10,7 +10,6 @@ import {
   Routes,
   Route,
   Link,
-  useLocation
 } from "react-router-dom";
 import Home from './pages/home';
 import Activity from './pages/activity';
@@ -29,11 +28,11 @@ function App() {
   }
 
   useEffect(() => {
-    axios.get('http://localhost/api.php?req=hendeks', {
+    axios.get('/api.php?req=hendeks', {
     })
     .then(function (response) {
       setData(response.data);
-      axios.get('http://localhost/api.php?req=stations', {
+      axios.get('/api.php?req=stations', {
       }).then((data)=>{
         setStations(data.data);
         setLoading(false); // Set loading to false when data is fetched
@@ -56,17 +55,15 @@ function App() {
   return (
     <div>
     <div className="App">
-      {
-        window.location.pathname == "/" ? <Header/> : ""
-      }
       <Router>
+        <Header/>
         <Routes>
           <Route path="/" element={<Home data={data} stations={stations} search={search} />} />
           <Route path="/activity" element={<Activity data={data} />} />
           <Route path="/mytrip" element={<Mytrip data={data} stations={stations} />} />
         </Routes>
+        <Navbar setSearchF={setSearchF}/>
       </Router>
-      <Navbar setSearchF={setSearchF}/>
     </div>
     </div>
   );

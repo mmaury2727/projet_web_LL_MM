@@ -2,7 +2,7 @@ import {React, useEffect, useState} from 'react'
 import { GoogleMaps } from './GoogleMaps';
 import { GoogleMapsWrapper } from './GoogleMapsWrapper.tsx';
 import Search from './Search'
-
+import { NavLink } from 'react-router-dom';
 function Body(props) {
   
   const [mapData, setMapData] = useState([{lat: 0, lng: 0}]);
@@ -52,9 +52,9 @@ function Body(props) {
           }
         </div>
         <div className="map-overlay-btn">
-          <a href="/add" className="map-btn">
+          <NavLink to="/add" className="map-btn">
             +
-          </a>
+          </NavLink>
           <button onClick={locateMe} class="map-btn">
             📍
           </button>
