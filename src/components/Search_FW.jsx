@@ -25,8 +25,8 @@ function Search(props) {
     setSearchTerm(item.name);
   };
   return (
-    <div class="container mx-auto p-4">
-      <div class="flex justify-center p-4 px-3 py-10">
+    <div class="container mx-auto">
+      <div class="flex justify-center px-3 mb-5">
         <div class="w-full max-w-md">
           <div class="bg-white shadow-md rounded-lg px-3 py-2 mb-4">
             <div class="flex items-center bg-gray-200 rounded-md">

@@ -25,7 +25,11 @@ function Body(props) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          setMapData([...mapData, {lat: latitude, lng: longitude, type:"me"}])
+          if (mapData.length && mapData.find(marker => marker.type === "me")){
+            mapData[mapData.indexOf(mapData.find(marker => marker.type === "me"))] = {lat: latitude, lng: longitude, type:"me"}
+          } else {
+            setMapData([...mapData, {lat: latitude, lng: longitude, type:"me"}])
+          }
         },
         (error) => {
           console.error("Error getting location:", error.message);
@@ -48,9 +52,6 @@ function Body(props) {
           }
         </div>
         <div className="map-overlay-btn">
-          <button class="map-btn" id='install-button'>
-          ⬇
-          </button>
           <a href="/add" className="map-btn">
             +
           </a>
