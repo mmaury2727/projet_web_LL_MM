@@ -13,8 +13,37 @@
 
 [tacos3vian.de](https://tacos3vian.de "tacos3vian.de")
 
-## ⚙️ Installation
+## ⚙️ Installation locale
+Remplir clé API Gmaps dans src/components/GoogleMapsWrapper.tsx
+<br>
 `docker compose up -d --build`
+<br>
+Vérifier que la BDD est bien préremplie, sinon :
+<br>
+Ouvrir un shell dans le container :
+<br>
+`docker exec -it DOCKER_CONTAINER_ID bin/bash`
+<br>
+Connexion MySQL :
+<br>
+`mysql`
+<br>
+`USE hendektracker;`
+<br>
+`source /path/to/hendektracker.sql;`
+<br>
+`exit`
+<br>
+
+<br>
+Ports : 
+<br>
+  40420 = Front
+<br>
+  40422 = API (PHP)
+<br>
+  40423 = DB (MySQL)
+<br>
 
 ## ✨ Features / To Do
 - ✅ <b>Listage des contrôleurs sur une carte Google Maps</b>
