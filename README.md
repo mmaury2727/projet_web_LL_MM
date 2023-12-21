@@ -11,7 +11,7 @@
 ---
 ## 💻 Demo
 
-[tacos3vian.de](https://tacos3vian.de "tacos3vian.de") => 20.12 : down pour la journée
+[tacos3vian.de](https://tacos3vian.de "tacos3vian.de") => <strike>20.12 : down pour la journée</strike>
 
 ## ⚙️ Installation locale
 Remplir clé API Gmaps dans src/components/GoogleMapsWrapper.tsx
