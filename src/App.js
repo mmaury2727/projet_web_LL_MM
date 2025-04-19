@@ -28,11 +28,11 @@ function App() {
   }
 
   useEffect(() => {
-    axios.get('https://api.tacos3vian.de/api.php?req=hendeks', {
+    axios.get('/api/api.php?req=hendeks', {
     })
     .then(function (response) {
       setData(response.data);
-      axios.get('https://api.tacos3vian.de/api.php?req=stations', {
+      axios.get('/api/api.php?req=stations', {
       }).then((data)=>{
         setStations(data.data);
         setLoading(false); // Set loading to false when data is fetched

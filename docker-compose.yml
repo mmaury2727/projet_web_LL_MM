@@ -7,20 +7,20 @@ services:
       context: .
       dockerfile: Dockerfile.react
     ports:
-      - "40420:9080"
+      - "4023:9080"
     networks:
       - hendek
+
   api:
     container_name: 'hendek-api'
     build: 
       context: ./server
       dockerfile: Dockerfile.apache
-    ports:
-      - "40422:80"
     depends_on:
       - db
     networks:
       - hendek
+
   db:
     container_name: 'hendek-db'
     image: mysql:5.7
@@ -31,18 +31,14 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: "true"
       MYSQL_DATABASE: hendektracker
     volumes:
-      - db_data:/var/lib/mysql
-    ports:
-      - "40423:3306"
+      - db_hendek:/var/lib/mysql
     networks:
       - hendek
+
 volumes:
-  db_data: {}
+  db_hendek: {}
 
 networks:
   hendek:
      name: hendek-net
      driver: bridge
-     ipam:
-      config:
-        - subnet: 10.0.7.0/24
